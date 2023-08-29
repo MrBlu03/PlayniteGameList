@@ -1,0 +1,655 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>Name</title>
+    <link rel="manifest" href="manifest.webmanifest">
+	<meta name="viewport" content="width=device-width, initial-scale=0.5">
+	<style>
+h2:after,
+.cards .card figcaption,
+.cards .card:after {
+  position: absolute;
+}
+
+h2,
+h2 strong,
+.cards .card
+{
+  position: relative;
+}
+
+.cards {
+  display: flex;
+}
+
+h2,
+h2 strong,
+h2 span {
+  vertical-align: middle;
+}
+
+body {
+  background: #24282f;
+  font-family: 'Arial';
+}
+
+.wrapper {
+  padding: 15px;
+}
+
+h2 {
+  padding: 10px;
+  padding-left: 25px;
+  color: #ccc;
+  margin: 0;
+}
+
+h2 strong {
+  z-index: 2;
+  background: #24282f;
+  padding: 4px 8px;
+}
+
+h2 span {
+  font-size: 0.7em;
+  color: #aaa;
+  margin-left: 10px;
+}
+
+h2:after {
+  content: '';
+  z-index: 1;
+  bottom: 50%;
+  margin-bottom: -2px;
+  height: 2px;
+  left: 0;
+  right: 0;
+  background: #373d47;
+}
+
+.cards {
+  flex-flow: row wrap;
+}
+
+.cards .card {
+  margin: 20px;
+  width: 180px;
+  height: 270px;
+  overflow: hidden;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.8);
+  transform-origin: center top;
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+  transition: 0.3s;
+}
+
+.cards .card img {
+  width: 100%;
+  min-height: 100%;
+}
+
+.cards .card figcaption {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4px;
+  font-size: 16px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #DDD;
+  transition: 0.3s;
+}
+
+#h2jscript {
+  cursor:pointer;
+}
+
+.cards .card:hover,
+.cards .card:focus,
+.cards .card:active {
+  box-shadow: 0 8px 16px 3px rgba(0,0,0,0.6);
+  transform: translateY(-3px) scale(1.05) rotateX(15deg);
+}
+
+.cards .card:hover figcaption,
+.cards .card:focus figcaption,
+.cards .card:active figcaption {
+  transform: none;
+}
+
+.cards .card:hover:after,
+.cards .card:focus:after,
+.cards .card:active:after {
+  transform: rotate(25deg);
+  top: -40%;
+  opacity: 0.15;
+}
+
+.quicklinks {
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.quicklink {
+  margin: 10px;
+}
+
+/* unvisited link */
+a:link {
+  color: #ccc;
+}
+/* visited link */
+a:visited {
+  color: #ccc;
+}
+/* mouse over link */
+a:hover {
+  color: #EEE;
+}
+/* selected link */
+a:active {
+  color: #ccc;
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+.Menu {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#BackTopButton {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: red; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 20px; /* Increase font size */
+}
+
+.MenuButton {
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: #555;/* Set a background color */
+  color: #ccc; /* Text color */
+  padding: 5px; /* Some padding */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 20px;/* Increase font size */
+  margin-top: 10px;
+  margin-left: 15px;
+  cursor:pointer;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #666; /* Add a dark-grey background on hover */
+  color: #eee; /* Text color */
+}
+
+#BackTopButton:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+}
+
+select#combobselect {
+    background-color:#555;
+    color:#CCC;
+}
+
+#label {
+   font-size: 20px;
+   color: #CCC;
+}
+
+input{
+  display: block;
+  background: #fff;
+  padding: .6rem;
+  border-radius: 0.3rem;
+  width: 300px;
+  border: 0.1rem solid #BDBDBD;
+  outline: none;
+  height: 1rem;
+}
+
+input:hover{
+	border: 0.1rem solid #0F52BA !important;
+}
+
+#searchbutton{
+  display: block;
+  background: #fff;
+  padding: .6rem;
+  border-radius: 0.3rem;
+  width: 175px;
+  border: 0.1rem solid #BDBDBD;
+  outline: none;
+  height: 2rem;
+}
+
+#searchbutton:hover{
+	border: 0.1rem solid #0F52BA !important;
+}
+	</style>
+   <script>
+	function search() {
+		var input, filter, games, game, cards, card, i, j, txtValue, wrapper, quicklinks, quicklink, quicklinkid, needhide, numvisible, quicklinklinks, quicklinkvalue;
+		input = document.getElementById("search");
+		filter = input.value.toUpperCase();
+
+		wrapper = document.getElementById("wrapper");
+		parentElement = wrapper.parentElement;
+		fragment = document.createDocumentFragment();
+		fragment.appendChild(wrapper.cloneNode(true));
+		wrapper.remove();
+		games = fragment.childNodes[0].getElementsByTagName("figcaption");
+		i = games.length - 1;
+		while (i >= 0) {
+			game = games[i];
+			txtValue = game.innerText;
+			if (txtValue.toUpperCase().indexOf(filter) > -1) {
+				game.parentElement.parentElement.style.display = "";
+			} else {
+				game.parentElement.parentElement.style.display = "none";
+			}
+			i--;
+		}
+		
+		quicklinks = fragment.childNodes[0].querySelectorAll("div[id^='quicklink-']")
+		i = quicklinks.length - 1;
+		while (i >= 0) {
+			quicklink = quicklinks[i];
+			quicklinkid = quicklink.id;
+			quicklinkvalue = quicklinkid.replace("quicklink-", "");
+			cards = fragment.getElementById(quicklinkid.replace("quicklink-", ""));
+			needhide = true;
+			if(cards)
+			{
+			
+				j = cards.children.length -1
+				numvisible = 0;
+				while (j >= 0)
+				{
+					if (cards.children[j].style.display == "")
+					{
+						needhide = false;
+						numvisible++;
+					}
+					j--;
+				}
+				
+				quicklinklinks = fragment.childNodes[0].querySelectorAll("option[value=\"#" + quicklinkid.replace(/["\\]/g, '\\$&') + "\"]")
+				if (needhide)
+				{
+					quicklink.style.display = "none";
+					cards.style.display = "none";
+					if (quicklinklinks.length == 1)
+					{
+						quicklink.children[0].children[0].innerHTML = "&#x25BA;";
+						quicklink.children[0].children[0].style.color = "#790000";
+						quicklinklinks[0].innerText = quicklinkvalue + " (" + numvisible.toString() + ")";
+						quicklink.children[0].children[1].children[0].innerText = "(" + numvisible.toString() + ")"
+						quicklinklinks[0].style.display = "none";
+					}
+				} else {
+					quicklink.style.display = "";					
+					cards.style.display = "";
+					if (quicklinklinks.length == 1)
+					{
+						quicklink.children[0].children[0].innerHTML = "&#x25BC;";
+						quicklink.children[0].children[0].style.color = "#007962";
+						quicklinklinks[0].innerText = quicklinkvalue + " (" + numvisible.toString() + ")";
+						quicklink.children[0].children[1].children[0].innerText = "(" + numvisible.toString() + ")"
+						quicklinklinks[0].style.display = "";
+					}
+				}
+			}
+			i--;
+		}
+		
+		parentElement.appendChild(fragment.childNodes[0]);
+		
+		//have to renable this
+		const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+		observer.observe();
+		
+		// Get the input field
+		var input = document.getElementById("search");
+
+		// Execute a function when the user releases a key on the keyboard
+		input.addEventListener("keyup", function(event) {
+		  // Number 13 is the "Enter" key on the keyboard
+		  if (event.keyCode === 13) {
+			// Cancel the default action, if needed
+			event.preventDefault();
+			// Trigger the button element with a click
+			document.getElementById("searchbutton").click();
+		  }
+		});
+	}
+  </script>
+  </head>
+  <body>
+    <button onclick="topFunction()" id="BackTopButton" title="Go to top">Top</button>
+    <div class="wrapper" id="wrapper">
+      <h2><strong>MAIN MENU - Name<span>(Category ascending / Name ascending)</span></strong></h2>
+      <div class="Menu"><a Class="MenuButton" href="index.html">Name ▲</A><a Class="MenuButton" href="default%20list%20text_source_ascending_name_ascending.html">Source ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html">Library ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html">Platform ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_releaseyear_descending_name_ascending.html">Release Year ▼</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_agerating_ascending_name_ascending.html">Age Rating ▲</A><a Class="MenuButton" href="default%20list%20text_favorite_ascending_name_ascending.html">Favorite ▲</A><a Class="MenuButton" href="default%20list%20text_lastactivitysegment_ascending_name_ascending.html">Last Activity Segment ▲</A><a Class="MenuButton" href="default%20list%20text_playtimecategory_ascending_name_ascending.html">Playtime Category ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_region_ascending_name_ascending.html">Region ▲</A><a Class="MenuButton" href="default%20list%20text_completionstatus_ascending_name_ascending.html">Completion Status ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html">User Score ▼</A><a Class="MenuButton" href="default%20list%20text_userscoregroup_ascending_name_ascending.html">User Score Group ▲</A><a Class="MenuButton" href="default%20list%20text_userscorerating_ascending_name_ascending.html">User Score Rating ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html">Community Score ▼</A><a Class="MenuButton" href="default%20list%20text_communityscoregroup_ascending_name_ascending.html">Community Score Group ▲</A><a Class="MenuButton" href="default%20list%20text_communityscorerating_ascending_name_ascending.html">Community Score Rating ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html">Critic Score ▼</A><a Class="MenuButton" href="default%20list%20text_criticscoregroup_ascending_name_ascending.html">Critic Score Group ▲</A><a Class="MenuButton" href="default%20list%20text_criticscorerating_ascending_name_ascending.html">Critic Score Rating ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_category_ascending_name_ascending.html">Category ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html">Genre ▲</A><a Class="MenuButton" href="default%20list%20text_addedsegment_ascending_name_ascending.html">Added Segment ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html">Developer ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html">Feature ▲</A><a Class="MenuButton" href="default%20list%20text_installationstatus_ascending_name_ascending.html">Installation Status ▲</A><a Class="MenuButton" href="default%20list%20text_iscustomgame_ascending_name_ascending.html">Custom Game ▲</A><a Class="MenuButton" href="default%20list%20text_modifiedsegment_ascending_name_ascending.html">Modified Segment ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_playcount_descending_name_ascending.html">Play Count ▼</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html">Publisher ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_serie_ascending_name_ascending.html">Serie ▲</A><a Class="MenuButton" href="default%20list%20text_hidden_ascending_name_ascending.html">Hidden ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html">Added ▼</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html">Last Activity ▼</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html">Modified ▼</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html">Release Date ▼</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_playtime_descending_name_ascending.html">Playtime ▼</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html">Tag ▲</A></div>
+      <h2><strong>Search</strong></h2><input type="text" id="search" placeholder="Type in a game name to search"><br/><button onclick="search()" id="searchbutton">Search</button>
+      <h2><strong>Quick Links</strong></h2>
+      <P id="label">Category: <select id="combobselect" onchange="window.location=this.options[this.selectedIndex].value"><option value="#quicklink-01-CurrentSinglePlayer">01-CurrentSinglePlayer (3)</option><option value="#quicklink-02-FrequentPlay">02-FrequentPlay (5)</option><option value="#quicklink-03-OccasionalPlay">03-OccasionalPlay (22)</option><option value="#quicklink-04-GameBackLog">04-GameBackLog (5)</option></select></P>
+      <div id="quicklink-01-CurrentSinglePlayer"><h2 id="h2jscript" onclick="ShowHide('01-CurrentSinglePlayer')"><strong id="eye-01-CurrentSinglePlayer" style="color: #007962;">&#x25BC;</strong><strong>01-CurrentSinglePlayer<span>( 3 )</span></strong></h2></div>
+<div id="01-CurrentSinglePlayer" class="cards">
+<figure class="card">
+  <a href="e108c07c-c28f-4fb6-82d0-dcb292566ee5.html">
+  <img class="lozad" data-src="e108c07c-c28f-4fb6-82d0-dcb292566ee5/f35d154a-2f9a-4abd-baec-f229b7b3d676.webp"/>
+  <figcaption>Cyberpunk 2077</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="54180f87-6902-4053-98a0-cbab74b07460.html">
+  <img class="lozad" data-src="54180f87-6902-4053-98a0-cbab74b07460/a8ec4f3d-f4a4-4a64-b27b-850d9e0049e8.jpg"/>
+  <figcaption>DOOM Eternal</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="baae2c37-fd3d-45ee-a28d-97ece35a046d.html">
+  <img class="lozad" data-src="baae2c37-fd3d-45ee-a28d-97ece35a046d/3d6b3d4c-e0cb-4a83-ab3c-c0b8fdc42092.png"/>
+  <figcaption>Marvel&#39;s Guardians of the Galaxy</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-02-FrequentPlay"><h2 id="h2jscript" onclick="ShowHide('02-FrequentPlay')"><strong id="eye-02-FrequentPlay" style="color: #007962;">&#x25BC;</strong><strong>02-FrequentPlay<span>( 5 )</span></strong></h2></div>
+<div id="02-FrequentPlay" class="cards">
+<figure class="card">
+  <a href="2584cfba-d497-47bc-8e1a-47e92880eac7.html">
+  <img class="lozad" data-src="2584cfba-d497-47bc-8e1a-47e92880eac7/af4ba62d-9b03-45f3-9267-332ac12faad5.png"/>
+  <figcaption>Apex Legends</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="9b974e87-54d3-4bcf-8f9b-e21eee1a0189.html">
+  <img class="lozad" data-src="9b974e87-54d3-4bcf-8f9b-e21eee1a0189/347c3b11-c9cc-4e0e-8010-60c5d38de37b.jpg"/>
+  <figcaption>Dauntless</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="ee75a3cb-3c9f-4e63-adf8-359a74e83bff.html">
+  <img class="lozad" data-src="ee75a3cb-3c9f-4e63-adf8-359a74e83bff/5bd23b52-ec9d-4b82-8065-7fd77a3c5ad9.png"/>
+  <figcaption>ForHonor</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="469d81b9-976e-445a-a61d-f5a19ef5fb4e.html">
+  <img class="lozad" data-src="469d81b9-976e-445a-a61d-f5a19ef5fb4e/c7a7b52e-af78-4ab4-b6bf-c1fabe7f9461.png"/>
+  <figcaption>Titanfall 2</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="e47434a4-736d-44c7-abe2-76556e635343.html">
+  <img class="lozad" data-src="e47434a4-736d-44c7-abe2-76556e635343/63ecf72e-5e17-4856-a005-4100520140ac.jpg"/>
+  <figcaption>Valorant</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-03-OccasionalPlay"><h2 id="h2jscript" onclick="ShowHide('03-OccasionalPlay')"><strong id="eye-03-OccasionalPlay" style="color: #007962;">&#x25BC;</strong><strong>03-OccasionalPlay<span>( 22 )</span></strong></h2></div>
+<div id="03-OccasionalPlay" class="cards">
+<figure class="card">
+  <a href="611183cf-9611-4d59-ab9f-2e91944548b8.html">
+  <img class="lozad" data-src="611183cf-9611-4d59-ab9f-2e91944548b8/9f6cbd84-088a-4b48-be73-ef1d00d35b12.png"/>
+  <figcaption>Assetto Corsa</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="24013d35-1300-49f5-9a78-e8981fb71769.html">
+  <img class="lozad" data-src="24013d35-1300-49f5-9a78-e8981fb71769/ecb37b76-60b2-477a-9253-1da705b41d81.jpg"/>
+  <figcaption>BattleBit Remastered</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="43d5090b-074d-4427-ae7e-4dd08d3f6ccc.html">
+  <img class="lozad" data-src="43d5090b-074d-4427-ae7e-4dd08d3f6ccc/1a00c1fa-11cb-425c-b6fa-5b024e414039.png"/>
+  <figcaption>BIGFOOT</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="32fd5ccb-2a04-44f4-8427-2d8db97ea369.html">
+  <img class="lozad" data-src="32fd5ccb-2a04-44f4-8427-2d8db97ea369/f21560f0-200d-4f53-89e2-87063a1b9450.png"/>
+  <figcaption>Deep Rock Galactic</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="64d1c81d-f2b1-4f51-9b95-4af65dabc2a8.html">
+  <img class="lozad" data-src="64d1c81d-f2b1-4f51-9b95-4af65dabc2a8/71f32e30-52f2-435b-bc9b-0e33ee6e3fb1.jpg"/>
+  <figcaption>Gang Beasts</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="82d8a015-8ef0-4edf-841e-eb9ce70b6173.html">
+  <img class="lozad" data-src="82d8a015-8ef0-4edf-841e-eb9ce70b6173/c3c541cd-f7bb-47c2-8542-a0918e743907.png"/>
+  <figcaption>Monopoly Plus</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="40aa4f40-02ff-40f0-8d17-f7459517b3ea.html">
+  <img class="lozad" data-src="40aa4f40-02ff-40f0-8d17-f7459517b3ea/12e5319a-6c3a-4142-89f8-7dcbdae62f2f.png"/>
+  <figcaption>Overwatch 2</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="18a4adcd-7c56-44bd-b63c-92dbbb4d147c.html">
+  <img class="lozad" data-src="18a4adcd-7c56-44bd-b63c-92dbbb4d147c/37b1eb5c-905c-4b95-bab0-552a57cd3616.png"/>
+  <figcaption>Paladins</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="13737f39-566a-4ff1-9321-30ccccb3e19e.html">
+  <img class="lozad" data-src="13737f39-566a-4ff1-9321-30ccccb3e19e/c8988610-286e-40ba-a6ac-25e4860268ab.jpg"/>
+  <figcaption>PAYDAY 2</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="d88843f7-b4d0-42ed-8b69-226dee52cdb6.html">
+  <img class="lozad" data-src="d88843f7-b4d0-42ed-8b69-226dee52cdb6/2d3a1f4f-8911-4bcf-9585-ffe26bbfb547.png"/>
+  <figcaption>Phasmophobia</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="e1a26353-6cf5-4f56-b20b-93f30a47e709.html">
+  <img class="lozad" data-src="e1a26353-6cf5-4f56-b20b-93f30a47e709/7fc17c2e-ac8a-482a-9a23-2115764e7ae7.jpg"/>
+  <figcaption>Project Zomboid</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="08c73e26-e27b-4ca3-936d-5ad738ee12de.html">
+  <img class="lozad" data-src="08c73e26-e27b-4ca3-936d-5ad738ee12de/867a7189-3bb0-43bc-87ff-5111366125c0.png"/>
+  <figcaption>Risk of Rain 2</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="4fa87014-6111-4802-a49a-e52c7125b0d4.html">
+  <img class="lozad" data-src="4fa87014-6111-4802-a49a-e52c7125b0d4/e0128c7b-78ed-4aa9-9696-993f685f6a54.png"/>
+  <figcaption>RuneScape</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="7eadf805-ff30-4998-9de8-32528d85e5ce.html">
+  <img class="lozad" data-src="7eadf805-ff30-4998-9de8-32528d85e5ce/9812e59f-def7-4e98-ac57-05759e70b17a.png"/>
+  <figcaption>Satisfactory</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="dd49b6ee-853f-4d97-adc9-f6f77bac9340.html">
+  <img class="lozad" data-src="dd49b6ee-853f-4d97-adc9-f6f77bac9340/b2579901-a996-41e4-bac0-812abbeb2170.png"/>
+  <figcaption>Sea of Thieves</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="51c7d984-d60b-4f31-8708-483aee18d2f6.html">
+  <img class="lozad" data-src="51c7d984-d60b-4f31-8708-483aee18d2f6/0dfb1c83-6e41-4f97-86db-eea965285413.png"/>
+  <figcaption>The Forest</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="6afb6daf-c46b-4476-8a6c-d9259fa9ba45.html">
+  <img class="lozad" data-src="6afb6daf-c46b-4476-8a6c-d9259fa9ba45/c1d7f83f-05ee-4a71-9061-8a7831c70bb1.png"/>
+  <figcaption>The Isle</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="f2dfb1f8-7009-4169-bba0-62f84ea445d4.html">
+  <img class="lozad" data-src="f2dfb1f8-7009-4169-bba0-62f84ea445d4/01177332-b93e-4021-ace7-04f533420f3c.jpg"/>
+  <figcaption>Tiny Tina&#39;s Wonderlands</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="d08cd736-a623-48a0-a03e-53abb00a1c65.html">
+  <img class="lozad" data-src="d08cd736-a623-48a0-a03e-53abb00a1c65/019c9bb5-f2f4-4ffc-94db-3b2ac0e4b0f8.png"/>
+  <figcaption>Tom Clancy&#39;s The Division 2</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="812b2584-2bdc-4519-be42-b02fa33078b0.html">
+  <img class="lozad" data-src="812b2584-2bdc-4519-be42-b02fa33078b0/60db63cd-2b3d-46c1-b7df-cce3930b9bcc.jpg"/>
+  <figcaption>Trove</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="302fce14-972e-4628-9c60-1bf08e65e8a2.html">
+  <img class="lozad" data-src="302fce14-972e-4628-9c60-1bf08e65e8a2/c03d0d0c-f2e3-474a-a5e4-a637c68c228e.png"/>
+  <figcaption>Unturned</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="23e91586-a314-4681-b966-9bed241aea73.html">
+  <img class="lozad" data-src="23e91586-a314-4681-b966-9bed241aea73/fae5d348-3877-431c-b88c-8a041b4f4fd0.png"/>
+  <figcaption>Warframe</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-04-GameBackLog"><h2 id="h2jscript" onclick="ShowHide('04-GameBackLog')"><strong id="eye-04-GameBackLog" style="color: #007962;">&#x25BC;</strong><strong>04-GameBackLog<span>( 5 )</span></strong></h2></div>
+<div id="04-GameBackLog" class="cards">
+<figure class="card">
+  <a href="20771092-f073-4fc4-8347-f76c326072ab.html">
+  <img class="lozad" data-src="20771092-f073-4fc4-8347-f76c326072ab/129ff55f-f967-46d1-b09c-10c615a9fe82.png"/>
+  <figcaption>BioShock 2 Remastered</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="f0c86e9d-37ce-412a-971a-2bf1c08b3c72.html">
+  <img class="lozad" data-src="f0c86e9d-37ce-412a-971a-2bf1c08b3c72/73face3b-7ea1-4e70-aa8b-2448aab3342a.png"/>
+  <figcaption>BioShock Infinite: Complete Edition</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="616ab8d2-9315-406b-81b8-66f6e3438e86.html">
+  <img class="lozad" data-src="616ab8d2-9315-406b-81b8-66f6e3438e86/27273510-e1df-4746-9f4d-6d26a9334f95.png"/>
+  <figcaption>BioShock Remastered</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="c4418ad4-2458-4120-a289-aa0bfdaa56aa.html">
+  <img class="lozad" data-src="c4418ad4-2458-4120-a289-aa0bfdaa56aa/efe724fc-f42c-4313-a77e-01133b9c1656.png"/>
+  <figcaption>Control</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="9a128a98-4083-4b60-b520-53879e6626b7.html">
+  <img class="lozad" data-src="9a128a98-4083-4b60-b520-53879e6626b7/016b7387-52a0-48de-bc66-5d21e948ae55.png"/>
+  <figcaption>The Witcher 3: Wild Hunt - Game of the Year Edition</figcaption>
+  </a>
+</figure>
+
+</div>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+  <script>
+    const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+    observer.observe();
+    
+	// Get the input field
+	var input = document.getElementById("search");
+
+	// Execute a function when the user releases a key on the keyboard
+	input.addEventListener("keyup", function(event) {
+	  // Number 13 is the "Enter" key on the keyboard
+	  if (event.keyCode === 13) {
+		// Cancel the default action, if needed
+		event.preventDefault();
+		// Trigger the button element with a click
+		document.getElementById("searchbutton").click();
+	  }
+	});
+	
+    //Get the button:
+    mybutton = document.getElementById("BackTopButton");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+	
+	function ShowHide(body_id){
+	var elem
+
+		elem = document.getElementById(body_id);
+		elemclick = document.getElementById("eye-" + body_id);
+		
+		if(!elem) return true;
+		if(!elemclick) return true;
+
+		if (elem.style.display == "none") {
+		  elem.style.display = "";
+		  elemclick.innerHTML = "&#x25BC;";
+		  elemclick.style.color = "#007962";
+		}
+		else {
+		  elem.style.display = "none";
+		  elemclick.innerHTML = "&#x25BA;";
+		  elemclick.style.color = "#790000";
+		}
+		return true;
+	}
+   </script>
+</html>
