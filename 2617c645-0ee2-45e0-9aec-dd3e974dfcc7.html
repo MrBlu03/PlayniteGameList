@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Greatest Penguin Heist of All Time</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('2617c645-0ee2-45e0-9aec-dd3e974dfcc7/1b3ba352-c4c3-4551-81c4-bdc9d3bf4b07.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="2617c645-0ee2-45e0-9aec-dd3e974dfcc7/5385b142-308d-4e99-b362-f0faf3e15e4d.ico"/> The Greatest Penguin Heist of All Time</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="2617c645-0ee2-45e0-9aec-dd3e974dfcc7/03d9a82b-9f0b-4cbb-8ee5-d9696f6f1352.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>1h 12m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-28/01/2023">28/01/2023</a> 20:44:45</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-16/07/2023">16/07/2023</a> 23:55:11</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-17/07/2023">17/07/2023</a> 15:27:54</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-02/07/2021">02/07/2021</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-That & That Other Fish">That & That Other Fish</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-That & That Other Fish">That & That Other Fish</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1451480/The_Greatest_Penguin_Heist_of_All_Time" target="_blank">Steam</a><br/><a href="https://twitter.com/ThatOtherFish1" target="_blank">Twitter</a><br/><a href="https://www.twitch.tv/directory/game/The%20Greatest%20Penguin%20Heist%20of%20All%20Time" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					The Greatest Penguin Heist of All Time is the one and only 1-8 player CO-OP physics-based heist game featuring a bunch of kleptomanic penguins. You'll experience a blend of physics-based platforming with stealth, strategy, action, and CHAOS.<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1451480/extras/store-about.png?t=1687786032" /><br><br>Being inspired by old school stealth and heist games along with modern physics platformers, Penguin Heist aims to breathe new life into the genre with a modern physics engine along with multiplayer. You pick your mission, your loadout, and you set out on your mission. Use your tools, weapons, and wit to infiltrate, steal, and exfiltrate as well as you can. Unlock new weapons and items by completing quests and exploring the maps, and get the sickest penguin drip by spending your hard earned money in the clothing store.<br><br>Choose stealth and complete the game without killing anyone, choose chaos and blow everything up with high-tech weaponry, or anything inbetween. No matter what level of expertise you are on, Penguin Heist will offer a challenge for everyone. If not, you can have fun slapping your friends with bananas and baguettes.<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1451480/extras/store-features.png?t=1687786032" /><br><br><ul class="bb_ul"><li>Online CO-OP with up to 8 people playing together<br></li><li>11 very different heists with several side quests<br></li><li>Alternative game modes, such as pizza baking, zombie survival, and PvP<br></li><li>100+ quests spread across the maps<br></li><li>100+ weapons and items<br></li><li>90+ clothes and skins<br></li><li>19 unique skins<br></li><li>Diverse playing styles from stealth to explosive chaos<br></li><li>Heist planner with custom loadouts<br></li><li>Daily challenges<br></li><li>Realistic penguin nooting</li></ul><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1451480/extras/store-the_heists.png?t=1687786032" /><br><br>Penguin Heist features a variety of heist locations that all have their unique flair. One heist will have you stealing boats full of fish, another might have you stealing valuable works of art, and yet another may require you to kidnap an prized chef. However, it is the job of a penguin to figure out the way that they want to execute their heist. <strong>Loud</strong> or <strong>silent</strong>, <strong>lethal</strong> or <strong>non-lethal</strong> - there is no right answer... there is only the way <i>you</i> play!<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1451480/extras/store-the_shops.png?t=1687786032" /><h2 class="bb_tag">Weapon Store</h2><br>As you progress through the game, you will unlock new weapons, tools, and items. These range from normal guns to drones to explosives to food. Each item has a special feature that can be used to complete a heist. See a pair of penguins guarding a door? You can blast them into oblivion with dynamite and a minigun, you can poison them with stinky fish, you can lure them away and sneak in, you can distort gravity and run past.<br><br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1451480/extras/gunstore.png?t=1687786032" /><br><i>Get your gear from the Weapon Store. While it has the regular stock guns, you might want to check out the more unconventional weapons and items available.</i><h2 class="bb_tag">Clothing Store</h2>While a penguin can be proficient with every weapon and know heisting in and out, what is a penguin without style? Customize your penguin's skin, headwear, facewear, and clothes.<br><br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1451480/extras/clothesstore.png?t=1687786032" /><br><i>You don't need fancy loot when you've got style... well, you need the loot to buy clothes, but you get it.</i><h2 class="bb_tag">Post Office</h2>As an addition to the regular stores, the Post Office offers special deliveries as well as unique and epic items.<br><br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1451480/extras/postoffice.png?t=1687786032" /><br><i>Check out the daily deliveries at the local, cosy Post Office! Make sure to keeps your Penguin Stamps at hand, becuase here you pay with them instead of good old Fish Coins.</i><h2 class="bb_tag">Library</h2>In Penguin Heist, items and weapons are unlocked by finding blueprints. These can be obtained from completing quests or by exploring. Some are easy, others are hard, and that's why one of the features of the Library is to provide hints to the player.<br><br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1451480/extras/library.png?t=1687786032" /><br><i>Needs help on your heisting journey? Make sure to check out the Library for hints!</i><br><br><br><strong>Disclaimer: Please note that this is a physics game. The penguins have simulated joints and the controls are therefore not as responsive as your average game. You may find the controls &quot;janky&quot;, which is completely the result of the physics simulation.</strong>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>
